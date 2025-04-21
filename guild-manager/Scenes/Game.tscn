@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://cob4umiftmbp2"]
+
+[ext_resource type="Script" uid="uid://cmf8o3ymmaeye" path="res://Scripts/Game.gd" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://d3yarwcq4axyf" path="res://Scenes/Prefabs/ath.tscn" id="2_7lihs"]
+[ext_resource type="Texture2D" uid="uid://bxwskq6qyx5fk" path="res://Assets/UI/panel.png" id="2_gl6un"]
+[ext_resource type="StyleBox" uid="uid://dl41jsxhq0og6" path="res://Assets/UI/Styles/buttonDisabled.tres" id="3_b2bpf"]
+[ext_resource type="StyleBox" uid="uid://bnk7klb73yhix" path="res://Scenes/Prefabs/buttonHover.tres" id="4_7lihs"]
+[ext_resource type="StyleBox" uid="uid://dvwpt5lsqxwe3" path="res://Scenes/Prefabs/button.tres" id="5_fgofq"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iukft")
+
+[node name="ATH" parent="." instance=ExtResource("2_7lihs")]
+layout_mode = 1
+
+[node name="MissionsPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.168519
+anchor_right = 0.420312
+anchor_bottom = 1.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MissionsPanel"]
+custom_minimum_size = Vector2(803, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MissionsPanel/ScrollContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissionsLabel" type="NinePatchRect" parent="MissionsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gl6un")
+patch_margin_left = 159
+patch_margin_top = 50
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="MissionsPanel/ScrollContainer/VBoxContainer/MissionsLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Mes Missions"
+
+[node name="AddMission" type="Button" parent="MissionsPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = ExtResource("3_b2bpf")
+theme_override_styles/hover = ExtResource("4_7lihs")
+theme_override_styles/normal = ExtResource("5_fgofq")
+text = "Ajouter"
+
+[node name="AdventurersPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.563542
+anchor_top = 0.173148
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AdventurersPanel"]
+custom_minimum_size = Vector2(803, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AdventurersPanel/ScrollContainer"]
+modulate = Color(1, 0.73465, 0.438694, 1)
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Heroes" type="NinePatchRect" parent="AdventurersPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gl6un")
+patch_margin_left = 159
+patch_margin_top = 50
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="AdventurersPanel/ScrollContainer/VBoxContainer/Heroes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Mes Aventuriers"
+
+[node name="AddAdventurer" type="Button" parent="AdventurersPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = ExtResource("3_b2bpf")
+theme_override_styles/hover = ExtResource("4_7lihs")
+theme_override_styles/normal = ExtResource("5_fgofq")
+text = "Ajouter"
+
+[connection signal="pressed" from="MissionsPanel/ScrollContainer/VBoxContainer/AddMission" to="." method="_on_add_mission_pressed"]
+[connection signal="pressed" from="AdventurersPanel/ScrollContainer/VBoxContainer/AddAdventurer" to="." method="_on_add_adventurer_pressed"]

@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0a0f8ndxrgaj"]
+
+[ext_resource type="Texture2D" uid="uid://dm3bd525ruj3" path="res://Assets/UI/box.png" id="1_xavdt"]
+[ext_resource type="Texture2D" uid="uid://c535uj6atp25p" path="res://Assets/UI/button.png" id="2_33hr6"]
+[ext_resource type="StyleBox" uid="uid://dl41jsxhq0og6" path="res://Assets/UI/Styles/buttonDisabled.tres" id="2_bsyu6"]
+[ext_resource type="StyleBox" uid="uid://bnk7klb73yhix" path="res://Scenes/Prefabs/buttonHover.tres" id="3_cxjqo"]
+[ext_resource type="Script" uid="uid://dcfj0eiuvvyop" path="res://Scripts/Missions/ButtonAccept.gd" id="3_mmwra"]
+[ext_resource type="StyleBox" uid="uid://dvwpt5lsqxwe3" path="res://Scenes/Prefabs/button.tres" id="5_msfd6"]
+[ext_resource type="Texture2D" uid="uid://cc4v4ku8hdsns" path="res://Assets/UI/button_green.png" id="7_cxjqo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmwra"]
+texture = ExtResource("2_33hr6")
+modulate_color = Color(1, 1, 1, 0.835294)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0yrq"]
+texture = ExtResource("2_33hr6")
+modulate_color = Color(0.788235, 0.47451, 0.333333, 0.831373)
+
+[sub_resource type="Theme" id="Theme_msfd6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mcwj"]
+texture = ExtResource("7_cxjqo")
+modulate_color = Color(0.368627, 1, 0, 1)
+
+[node name="Mission" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -556.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_xavdt")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="MissionTitle" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.0771978
+anchor_right = 0.9
+anchor_bottom = 0.222802
+offset_top = 8.3
+offset_bottom = -8.3
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "Titre de la mission"
+metadata/_edit_use_anchors_ = true
+
+[node name="Difficulty" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100052
+anchor_top = 0.257124
+anchor_right = 0.600312
+anchor_bottom = 0.361918
+theme_override_colors/font_color = Color(1, 1, 1, 0.360784)
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsRequired" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.48
+theme_override_font_sizes/font_size = 24
+text = "Stats demandée : MAG"
+
+[node name="Rewards" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.55
+anchor_right = 0.631
+anchor_bottom = 0.754
+offset_left = 0.0999985
+offset_top = -0.25
+offset_right = -0.0990601
+offset_bottom = 4.48999
+theme_override_font_sizes/font_size = 24
+text = "Récompense(s) :  10 Or et Rien de plus"
+autowrap_mode = 2
+
+[node name="Accept" type="Button" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.62
+anchor_top = 0.286
+anchor_right = 0.904
+anchor_bottom = 0.562
+offset_left = -0.400024
+offset_top = 0.135986
+offset_right = 0.320068
+offset_bottom = -0.487976
+theme_override_font_sizes/font_size = 38
+theme_override_styles/disabled = ExtResource("2_bsyu6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_cxjqo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_mmwra")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o0yrq")
+theme_override_styles/normal = ExtResource("5_msfd6")
+text = "Accepter"
+script = ExtResource("3_mmwra")
+
+[node name="Results" type="Button" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.619792
+anchor_top = 0.572519
+anchor_right = 0.904167
+anchor_bottom = 0.847328
+theme = SubResource("Theme_msfd6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/disabled = ExtResource("2_bsyu6")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_cxjqo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_mmwra")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o0yrq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0mcwj")
+text = "Résultats"
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Label" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.652604
+anchor_top = 0.354962
+anchor_right = 0.949479
+anchor_bottom = 0.505725
+theme_override_colors/font_color = Color(1, 0.568627, 0.376471, 0.854902)
+theme_override_font_sizes/font_size = 36
+text = "00:00"
+metadata/_edit_use_anchors_ = true

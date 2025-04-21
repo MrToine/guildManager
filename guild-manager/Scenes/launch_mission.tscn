@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2kark7kphu1h"]
+
+[ext_resource type="Script" uid="uid://dxsg34ee62jhe" path="res://Scripts/LaunchMission.gd" id="1_60aoy"]
+[ext_resource type="PackedScene" uid="uid://d3yarwcq4axyf" path="res://Scenes/Prefabs/ath.tscn" id="1_fktpo"]
+[ext_resource type="StyleBox" uid="uid://dl41jsxhq0og6" path="res://Assets/UI/Styles/buttonDisabled.tres" id="2_60aoy"]
+[ext_resource type="StyleBox" uid="uid://bnk7klb73yhix" path="res://Scenes/Prefabs/buttonHover.tres" id="3_ulosq"]
+[ext_resource type="StyleBox" uid="uid://ksik3wlop1wj" path="res://Assets/UI/Styles/button.tres" id="4_jta6m"]
+[ext_resource type="Texture2D" uid="uid://bxwskq6qyx5fk" path="res://Assets/UI/panel.png" id="5_5o06k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60aoy")
+
+[node name="ATH" parent="." instance=ExtResource("1_fktpo")]
+layout_mode = 1
+
+[node name="Panel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173958
+anchor_top = 0.193519
+anchor_right = 0.716146
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="backButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = ExtResource("2_60aoy")
+theme_override_styles/hover = ExtResource("3_ulosq")
+theme_override_styles/normal = ExtResource("4_jta6m")
+text = "Retour"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Mission" type="NinePatchRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_5o06k")
+patch_margin_left = 159
+patch_margin_top = 50
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Mission"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Récap Mission"
+
+[node name="MissionContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(803, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+modulate = Color(1, 0.73465, 0.438694, 1)
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Heroes" type="NinePatchRect" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_5o06k")
+patch_margin_left = 159
+patch_margin_top = 50
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Heroes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.179211
+anchor_top = 0.16
+anchor_right = 0.939068
+anchor_bottom = 0.83
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Aventurier(s) Sélectionné(s)"
+metadata/_edit_use_anchors_ = true
+
+[node name="count" type="Label" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer/Heroes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119474
+anchor_top = 0.16
+anchor_right = 0.167264
+anchor_bottom = 0.83
+theme_override_font_sizes/font_size = 48
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonValidation" type="Button" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = ExtResource("3_ulosq")
+theme_override_styles/normal = ExtResource("4_jta6m")
+text = "Valider la sélection"
+
+[connection signal="pressed" from="Panel/backButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ButtonValidation" to="." method="_on_button_validation_pressed"]

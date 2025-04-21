@@ -1,0 +1,174 @@
+[gd_scene load_steps=11 format=3 uid="uid://0vjvyvxlpp36"]
+
+[ext_resource type="Texture2D" uid="uid://dm3bd525ruj3" path="res://Assets/UI/box.png" id="1_d0rly"]
+[ext_resource type="StyleBox" uid="uid://dl41jsxhq0og6" path="res://Assets/UI/Styles/buttonDisabled.tres" id="2_icxfs"]
+[ext_resource type="Texture2D" uid="uid://b55s6jm8ct6bn" path="res://Assets/Adventurers/img/farmer.png" id="2_j8nnp"]
+[ext_resource type="StyleBox" uid="uid://bnk7klb73yhix" path="res://Scenes/Prefabs/buttonHover.tres" id="3_tmcnq"]
+[ext_resource type="Texture2D" uid="uid://c535uj6atp25p" path="res://Assets/UI/button.png" id="4_cwchg"]
+[ext_resource type="StyleBox" uid="uid://dvwpt5lsqxwe3" path="res://Scenes/Prefabs/button.tres" id="5_07gyr"]
+[ext_resource type="Script" uid="uid://co3fryqxy6hfd" path="res://Scripts/Adventurer/buttons_adventurer.gd" id="7_icxfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icxfs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.867908, 0.507607, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0rly"]
+texture = ExtResource("4_cwchg")
+modulate_color = Color(1, 1, 1, 0.835294)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icxfs"]
+texture = ExtResource("4_cwchg")
+modulate_color = Color(0.788235, 0.47451, 0.333333, 0.831373)
+
+[node name="Adventurer" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -556.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_d0rly")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="Panel" type="Panel" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icxfs")
+
+[node name="HeroName" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.092
+anchor_right = 0.79375
+anchor_bottom = 0.221947
+offset_left = 0.799957
+offset_top = 6.792
+offset_right = 1.0
+offset_bottom = -1.3
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "Nom"
+metadata/_edit_use_anchors_ = true
+
+[node name="Classe" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.258333
+anchor_top = 0.227099
+anchor_right = 0.758594
+anchor_bottom = 0.331893
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 4.0
+offset_bottom = 6.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.360784)
+theme_override_font_sizes/font_size = 24
+text = "Classe"
+metadata/_edit_use_anchors_ = true
+
+[node name="Traits" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.256
+anchor_top = 0.37
+anchor_right = 0.9
+anchor_bottom = 0.45
+offset_left = 8.47998
+offset_top = 6.12
+offset_right = 308.0
+offset_bottom = 6.11998
+theme_override_font_sizes/font_size = 24
+text = "Traits"
+
+[node name="Strength" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.260417
+anchor_top = 0.477099
+anchor_right = 0.341146
+anchor_bottom = 0.557252
+offset_left = 3.05176e-05
+offset_top = 30.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "FOR: 10"
+metadata/_edit_use_anchors_ = true
+
+[node name="Magic" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.260417
+anchor_top = 0.477099
+anchor_right = 0.341146
+anchor_bottom = 0.557252
+offset_left = 150.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "MAG: 10"
+metadata/_edit_use_anchors_ = true
+
+[node name="Agility" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.260417
+anchor_top = 0.477099
+anchor_right = 0.341146
+anchor_bottom = 0.557252
+offset_left = 300.0
+offset_top = 30.0
+offset_right = 300.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "AGI: 10"
+metadata/_edit_use_anchors_ = true
+
+[node name="Farmer" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(135, 133)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_j8nnp")
+
+[node name="Accept" type="Button" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.62
+anchor_top = 0.286
+anchor_right = 0.904
+anchor_bottom = 0.562
+offset_left = -0.400024
+offset_top = 0.135986
+offset_right = 0.320068
+offset_bottom = -0.487976
+theme_override_font_sizes/font_size = 38
+theme_override_styles/disabled = ExtResource("2_icxfs")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_tmcnq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_d0rly")
+theme_override_styles/hover = SubResource("StyleBoxTexture_icxfs")
+theme_override_styles/normal = ExtResource("5_07gyr")
+text = "Choisir"
+script = ExtResource("7_icxfs")
+
+[connection signal="pressed" from="NinePatchRect/Accept" to="NinePatchRect/Accept" method="_on_accept_button_pressed"]

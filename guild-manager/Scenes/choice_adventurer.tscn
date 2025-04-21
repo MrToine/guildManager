@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://j4hrd3y1xtfs"]
+
+[ext_resource type="Texture2D" uid="uid://bxwskq6qyx5fk" path="res://Assets/UI/panel.png" id="1_m3ciu"]
+[ext_resource type="Script" uid="uid://b0cnwkvf1jxyh" path="res://Scripts/Shop.gd" id="1_wo6dd"]
+[ext_resource type="PackedScene" uid="uid://d3yarwcq4axyf" path="res://Scenes/Prefabs/ath.tscn" id="2_26u8c"]
+[ext_resource type="StyleBox" uid="uid://dl41jsxhq0og6" path="res://Assets/UI/Styles/buttonDisabled.tres" id="2_wo6dd"]
+[ext_resource type="StyleBox" uid="uid://bnk7klb73yhix" path="res://Scenes/Prefabs/buttonHover.tres" id="3_26u8c"]
+[ext_resource type="StyleBox" uid="uid://ksik3wlop1wj" path="res://Assets/UI/Styles/button.tres" id="5_wo6dd"]
+
+[node name="choice_adventurer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wo6dd")
+nbMissions = 0
+
+[node name="ATH" parent="." instance=ExtResource("2_26u8c")]
+layout_mode = 1
+
+[node name="Panel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173958
+anchor_top = 0.193519
+anchor_right = 0.716146
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="backButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = ExtResource("2_wo6dd")
+theme_override_styles/hover = ExtResource("3_26u8c")
+theme_override_styles/normal = ExtResource("5_wo6dd")
+text = "Retour"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(803, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+modulate = Color(1, 0.73465, 0.438694, 1)
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Heroes" type="NinePatchRect" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_m3ciu")
+patch_margin_left = 159
+patch_margin_top = 50
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Heroes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Aventuriers Disponible"
+
+[connection signal="pressed" from="Panel/backButton" to="." method="_on_back_button_pressed"]

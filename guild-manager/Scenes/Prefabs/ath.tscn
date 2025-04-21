@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3yarwcq4axyf"]
+
+[ext_resource type="Script" uid="uid://da8tl8hhveegg" path="res://Scripts/UI/ATH.gd" id="1_l070j"]
+[ext_resource type="Texture2D" uid="uid://bxwskq6qyx5fk" path="res://Assets/UI/panel.png" id="2_xdniq"]
+[ext_resource type="Texture2D" uid="uid://ic425cj2vipu" path="res://Assets/UI/Icons/money.png" id="3_urtw5"]
+
+[node name="ATH" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l070j")
+
+[node name="Title" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.248958
+anchor_right = 0.748438
+anchor_bottom = 0.12037
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Title"]
+layout_mode = 2
+texture = ExtResource("2_xdniq")
+patch_margin_left = 800
+patch_margin_top = 80
+patch_margin_right = 159
+patch_margin_bottom = 50
+
+[node name="Label" type="Label" parent="Title/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 69
+text = "La Taverne du héros"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.926562
+anchor_top = 0.0185185
+anchor_right = 0.988542
+anchor_bottom = 0.0648148
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+metadata/_edit_use_anchors_ = true
+
+[node name="MoneySprite" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(100, 25)
+texture = ExtResource("3_urtw5")
+offset = Vector2(0, 5)

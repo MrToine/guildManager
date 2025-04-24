@@ -110,12 +110,11 @@ func _on_accept_pressed_button(mission) -> void:
 	Generals._load_scene("res://Scenes/launch_mission.tscn")
 	
 func _on_result_button_pressed(mission) -> void:
-	pass
+	print("Résultats")
 	
 func _mission_finished(id_mission: int) -> void:
 	var mission = DbManager._load_mission(id_mission)
 	print(mission)
-	pass
-	var button_results = missionsContainer.get_node("NinePatchRect")
-	print(button_results)
+	var button_results = missionsContainer.get_node("Mission/NinePatchRect/Results")
+	button_results.visible = true
 	print("mission : ", id_mission)
